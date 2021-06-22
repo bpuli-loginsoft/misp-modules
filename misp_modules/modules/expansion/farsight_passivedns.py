@@ -104,6 +104,7 @@ class FarsightDnsdbParser():
             for result in results:
                 passivedns_object = MISPObject('passive-dns')
                 passivedns_object.distribution = DEFAULT_DISTRIBUTION_SETTING
+                passivedns_object.add_attribute('permalink', type='link', value="https://dummy.com")
                 if result.get('rdata') and isinstance(result['rdata'], list):
                     for rdata in result.pop('rdata'):
                         passivedns_object.add_attribute(**self._parse_attribute(comment, 'rdata', rdata))
